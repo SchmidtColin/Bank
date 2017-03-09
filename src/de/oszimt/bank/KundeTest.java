@@ -13,12 +13,12 @@ import junit.framework.TestCase;
  */
 public class KundeTest extends TestCase{
 	public void testKunde(){
-	Kunde kunde = new Kunde("Swinka", 3123);
+		Kunde kunde = new Kunde("Swinka", 3123);
 	
-	assertNotNull(kunde);
+		assertNotNull(kunde);
 	
-	assertTrue("Name darf nicht leer sein", !kunde.getName().equals(""));
-	boolean vierstellig = kunde.getKundennr() >= 1000  && kunde.getKundennr() <= 9999;
-	assertTrue("Kundennummer muss vierstellig sein", vierstellig);
+		assertTrue("Name darf nicht leer sein", !kunde.getName().equals(""));
+		boolean vierstellig = kunde.getKundennr() >= 1000  && kunde.getKundennr() <= 9999;
+		assertTrue("Kundennummer muss vierstellig sein", vierstellig);
 	}
 }
