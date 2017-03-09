@@ -12,7 +12,7 @@ public class Konto {
 
 	/**
 	 * 
-	 * @param ersterInhaber
+	 * @param ersterInhaber First Kunde of the Konto
 	 * @param knr
 	 */
 	public Konto(final Kunde ersterInhaber,final int knr) {
@@ -23,7 +23,7 @@ public class Konto {
 	/**
 	 * Adds amount to the kontostand
 	 * 
-	 * @param zahl
+	 * @param amount to add, must be positive
 	 */
 	public void einzahlen(final double amount) {
 		if (amount > 0) {
@@ -34,18 +34,17 @@ public class Konto {
 	/**
 	 * Returns the kontostand
 	 * 
-	 * @return double
+	 * @return the kontostand
 	 */
-	public double getKontoStand() {
+	public double getKontostand() {
 		return kontostand;
 	}
 
 	/**
 	 * Removes amount from kontostand
 	 * 
-	 * @param zahl
-	 *            positive integer
-	 * @return boolean
+	 * @param amount to add, must be positive
+	 * @return true if successful, false if not
 	 */
 	public boolean abheben(final float amount) {
 		if (amount > 0 && kontostand >= amount) {
@@ -67,20 +66,12 @@ public class Konto {
 	/**
 	 * Gets the BLZ
 	 * 
-	 * @return
+	 * @return blz
 	 */
 	public int getBankleitzahl() {
 		return bankleitzahl;
 	}
 
-	/**
-	 * Sets the BLZ
-	 * 
-	 * @param bankleitzahl
-	 */
-	public void setBankleitzahl(final int bankleitzahl) {
-		this.bankleitzahl = bankleitzahl;
-	}
 
 	/**
 	 * Gets the Kontonummer
