@@ -3,6 +3,8 @@ package de.oszimt.test;
 import org.junit.Before;
 
 import de.oszimt.bank.Bank;
+import de.oszimt.bank.Konto;
+import de.oszimt.bank.Kunde;
 import junit.framework.TestCase;
 
 /**
@@ -27,7 +29,45 @@ public class BankTest extends TestCase {
       assertTrue(bank.getName().equals("Bank of Berlin"));
    }
 
+   public void addKundeTest() {
+      Kunde kunde = new Kunde("Hans", 1758);
+      bank.addKunde(kunde);
+      assertTrue(bank.getKunden().size() == 1);
+   }
+
+   public void kundeVorhandenTest() {
+      Kunde kunde = new Kunde("Hans", 1758);
+      bank.addKunde(kunde);
+      try {
+         bank.addKunde(kunde);
+      } catch (IllegalArgumentException e) {
+         assertEquals("Der Kunde existiert bereits.", e.getMessage());
+      }
+   }
+
+   public void addKontoTest() {
+      Kunde kunde = new Kunde("Hans", 1758);
+      Konto konto = new Konto(kunde, kunde.getKundennr());
+      bank.addKonto(konto);
+      assertTrue(bank.getKonten().size() == 1);
+   }
+
+   public void kontoVorhandenTest() {
+      Kunde kunde = new Kunde("Hans", 1758);
+      Konto konto = new Konto(kunde, kunde.getKundennr());
+      bank.addKonto(konto);
+      try {
+         bank.addKonto(konto);
+      } catch (IllegalArgumentException e) {
+         assertEquals("Das Konto existiert bereits.", e.getMessage());
+      }
+   }
+
    public void testBank() {
       banknameRichtigTest();
+      addKundeTest();
+      kundeVorhandenTest();
+      addKontoTest();
+      kontoVorhandenTest();
    }
 }
